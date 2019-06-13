@@ -1,4 +1,9 @@
 use std::process::Command;
+use working_ffmpeg::foo;
+use std::io::{self, BufRead};
+
+use rand::Rng;
+
 
 #[derive(Debug)]
 struct Person<'a> {
@@ -8,13 +13,20 @@ struct Person<'a> {
 
 
 fn main() {
-    // Why doesn't this work?
-    let bob = Person{ name:"Robert", age:42 };
+    //let mut rng = rand::thread_rng();
+    //
+    println!("Enter a filename:");
 
-    // Print text to the console
-    let x = 5 + 2;
-    println!("Hello world. 100? x = {} and Bob is:\n{:#?}", x, bob);
+    let stdin = io::stdin();
+    let mut iterator = stdin.lock().lines();
+    let input_filename = iterator.next().unwrap().unwrap();
 
+    let mut output_filename = input_filename.clone();
+    output_filename.push_str(".mp4");
+
+    foo(&input_filename, &output_filename);
+
+    let x = 2;
     match x {
         1 => println!("Hello!"),
         2 => println!("Hello 2!"),
