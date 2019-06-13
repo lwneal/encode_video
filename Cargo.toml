@@ -1,0 +1,9 @@
+[package]
+edition = "2018"
+name = "encode_video"
+version = "0.1.0"
+authors = ["Lawrence Neal <nealla@lwneal.com>"]
+
+[dependencies]
+working_ffmpeg={version="0.1.0", path="../working_ffmpeg"}
+rand = "0.6.5"
